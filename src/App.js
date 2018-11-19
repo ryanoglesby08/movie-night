@@ -1,28 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+import { Router } from '@reach/router'
+import { Box } from 'rebass'
 
-export default App;
+import Header from './Header'
+
+const MovieNight = () => (
+  <Box px="2" bg="black" color="white">
+    Movie night page
+  </Box>
+)
+const Plan = () => (
+  <Box px="2" bg="black" color="white">
+    Plan page
+  </Box>
+)
+
+const App = () => (
+  <Fragment>
+    <Header />
+    <main>
+      <Router>
+        <MovieNight path="/" />
+        <Plan path="/plan" />
+      </Router>
+    </main>
+  </Fragment>
+)
+
+export default App
