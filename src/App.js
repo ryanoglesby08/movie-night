@@ -1,31 +1,29 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import { Router } from '@reach/router'
 import { Box } from 'rebass'
 
 import Header from './Header'
+import Plan from './Plan/Plan'
 
-const MovieNight = () => (
-  <Box px="2" bg="black" color="white">
-    Movie night page
-  </Box>
-)
-const Plan = () => (
-  <Box px="2" bg="black" color="white">
-    Plan page
-  </Box>
-)
+const MovieNight = () => <div>Movie night page</div>
 
 const App = () => (
-  <Fragment>
+  <>
     <Header />
-    <main>
+    <Main>
       <Router>
         <MovieNight path="/" />
         <Plan path="/plan" />
       </Router>
-    </main>
-  </Fragment>
+    </Main>
+  </>
+)
+
+const Main = ({ children }) => (
+  <Box px="2" bg="black" color="white" css={{ height: '100vh' }}>
+    {children}
+  </Box>
 )
 
 export default App

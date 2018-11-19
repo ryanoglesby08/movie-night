@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import { Match, Link as RouterLink } from '@reach/router'
 import { Flex, Box } from 'rebass'
@@ -7,7 +7,7 @@ import styled from 'styled-components'
 const Header = () => (
   <header>
     <nav>
-      <Flex px={2} bg="white" alignItems="center">
+      <Flex bg="white" alignItems="center">
         <Match path="/plan">
           {({ match }) => {
             if (!match) {
@@ -15,12 +15,12 @@ const Header = () => (
             }
 
             return (
-              <Fragment>
+              <>
                 <NavLink to="/plan" active>
-                  Plan
+                  📒 Plan
                 </NavLink>
-                <NavLink to="/">It's movie night</NavLink>
-              </Fragment>
+                <NavLink to="/">🍿 It's movie night</NavLink>
+              </>
             )
           }}
         </Match>
@@ -32,12 +32,12 @@ const Header = () => (
             }
 
             return (
-              <Fragment>
-                <NavLink to="/plan">Plan</NavLink>
+              <>
+                <NavLink to="/plan">📒 Plan</NavLink>
                 <NavLink to="/" active>
-                  It's movie night
+                  🍿 It's movie night
                 </NavLink>
-              </Fragment>
+              </>
             )
           }}
         </Match>
