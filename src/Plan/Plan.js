@@ -3,12 +3,12 @@ import React, { useState } from 'react'
 import { Flex, Card, Image, Text, Heading, Button } from 'rebass'
 
 import BareUl from '../BareUl'
-import planData from './plan.json'
+import movieData from '../movies.json'
 
 const Plan = () => {
   const [currentMovie, setCurrentMovie] = useState(0)
 
-  if (currentMovie >= planData.movies.length) {
+  if (currentMovie >= movieData.movies.length) {
     return (
       <Text>
         👍 No more movies left to rate. You are ready for movie night.
@@ -18,7 +18,7 @@ const Plan = () => {
 
   return (
     <BareUl>
-      {planData.movies
+      {movieData.movies
         .filter((_, index) => index === currentMovie)
         .map(movie => (
           <MovieTile
