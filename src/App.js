@@ -26,7 +26,7 @@ const Main = ({ children }) => (
     pt={3}
     bg="black"
     color="white"
-    css={{ height: '100%' }}
+    css={{ minHeight: '100%' }}
   >
     {children}
   </Box>
