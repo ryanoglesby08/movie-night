@@ -20,7 +20,14 @@ const App = () => (
 )
 
 const Main = ({ children }) => (
-  <Box as="main" px="2" bg="black" color="white" css={{ height: '100vh' }}>
+  <Box
+    as="main"
+    px="2"
+    pt={3}
+    bg="black"
+    color="white"
+    css={{ height: '100vh' }}
+  >
     {children}
   </Box>
 )

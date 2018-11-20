@@ -1,65 +1,56 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-import { Match, Link as RouterLink } from '@reach/router'
+import { Router, Link as RouterLink } from '@reach/router'
 import { Flex, Box } from 'rebass'
 import styled from 'styled-components'
 
 const Header = () => (
   <header>
-    <nav>
-      <Flex bg="white" alignItems="center">
-        <Match path="/plan">
-          {({ match }) => {
-            if (!match) {
-              return null
-            }
-
-            return (
-              <>
-                <NavLink to="/plan" active>
-                  📒 Plan
-                </NavLink>
-                <NavLink to="/">🍿 It's movie night</NavLink>
-              </>
-            )
-          }}
-        </Match>
-
-        <Match path="/">
-          {({ match }) => {
-            if (!match) {
-              return null
-            }
-
-            return (
-              <>
-                <NavLink to="/plan">📒 Plan</NavLink>
-                <NavLink to="/" active>
-                  🍿 It's movie night
-                </NavLink>
-              </>
-            )
-          }}
-        </Match>
-      </Flex>
-    </nav>
+    <Router>
+      <NavLinks path="/" active="movie-night" />
+      <NavLinks path="/plan" active="plan" />
+    </Router>
   </header>
 )
+
+const NavLinks = ({ active }) => (
+  <nav>
+    <Flex bg="white">
+      <NavLink to="/plan" active={active === 'plan'}>
+        📒 Plan
+      </NavLink>
+      <NavLink to="/" active={active === 'movie-night'}>
+        🍿 It's movie night
+      </NavLink>
+    </Flex>
+  </nav>
+)
+NavLinks.propTypes = {
+  active: PropTypes.oneOf(['movie-night', 'plan']).isRequired,
+}
 
 const BareLink = styled(RouterLink)({
   color: 'inherit',
   textDecoration: 'none',
   fontWeight: 'bold',
+  display: 'flex',
 })
 
-const NavLink = ({ active, ...rest }) => (
-  <Box
-    p={3}
-    bg={active ? 'black' : 'white'}
-    color={active ? 'magenta' : 'black'}
-  >
-    <BareLink {...rest} />
-  </Box>
+const NavLink = ({ active, children, ...rest }) => (
+  <BareLink {...rest}>
+    <Box
+      as="span"
+      p={3}
+      bg={active ? 'black' : undefined}
+      color={active ? 'magenta' : 'black'}
+    >
+      {children}
+    </Box>
+  </BareLink>
 )
+NavLink.propTypes = {
+  active: PropTypes.bool.isRequired,
+}
 
 export default Header
