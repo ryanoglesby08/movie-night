@@ -5,8 +5,7 @@ import { Box } from 'rebass'
 
 import Header from './Header'
 import Plan from './Plan/Plan'
-
-const MovieNight = () => <div>Movie night page</div>
+import MovieNight from './MovieNight/MovieNight'
 
 const App = () => (
   <>

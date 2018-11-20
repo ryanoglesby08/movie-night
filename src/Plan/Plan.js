@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-import { Box, Flex, Card, Image, Text, Heading, Button } from 'rebass'
-import styled from 'styled-components'
+import { Flex, Card, Image, Text, Heading, Button } from 'rebass'
 
+import BareUl from '../BareUl'
 import planData from './plan.json'
 
 const Plan = () => {
@@ -127,11 +127,5 @@ const QAndA = ({
 QAndA.defaultProps = {
   showIf: true,
 }
-
-const BareUl = styled('ul')({
-  margin: 0,
-  padding: 0,
-  listStyle: 'none',
-})
 
 export default Plan
